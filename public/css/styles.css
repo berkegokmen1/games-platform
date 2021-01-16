@@ -1,0 +1,23 @@
+.navbar .btn-group .dropdown-menu a:hover {
+    color: #fff !important;
+}
+.navbar .btn-group .dropdown-menu a {
+    color: #000;
+}
+.navbar .btn-group .dropdown-menu a:active {
+    color: #000 !important;
+}
+    
+._closeBtnFix {
+    background: none;
+    border: none;
+}
+
+body {
+    height: 50vh;
+}
+
+._alertFix {
+    position: absolute;
+    width: 100%;
+}

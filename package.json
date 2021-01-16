@@ -1,0 +1,35 @@
+{
+  "name": "berkegokmen",
+  "version": "0.9.0",
+  "description": "A simple yet powerful game platform.",
+  "main": "app.js",
+  "scripts": {
+    "dev": "env-cmd -f ./config/dev.env nodemon app.js -e ejs,js,css,mjs,json",
+    "start": "node app.js"
+  },
+  "author": "berkegokmen1",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.11.10",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport.socketio": "^3.7.0",
+    "roomdata": "^1.1.7-b",
+    "serve-favicon": "^2.5.0",
+    "socket.io": "^3.0.5",
+    "unique-names-generator": "^4.3.1",
+    "uuid": "^8.3.2",
+    "uuidv4": "^6.2.6"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "nodemon": "^2.0.6"
+  }
+}

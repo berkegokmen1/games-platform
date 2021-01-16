@@ -1,0 +1,6 @@
+<% if (typeof errors == 'undefined') { %>
+    <% errors = [] %> 
+<% } %>
+<% errors.forEach((error) => { %>
+    <div class="alert alert-danger mx-2 my-1 alert-dismissible fade show" role="alert"><a href="#" class="close" data-dismiss="alert" data-bs-dismiss="alert" aria-label="Close"></a><%= error.message %></div>
+<% }) %>

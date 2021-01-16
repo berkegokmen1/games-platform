@@ -1,0 +1,119 @@
+<%- include('./partials/_header.ejs') %>
+    <link rel="stylesheet" href="/css/room/room-s.css">
+    <link rel="stylesheet" href="/css/room/room-m.css">
+</head>
+<body id="_body">
+    <div class="_alertFix">
+        <%- include('./partials/_flash.ejs') %>
+    </div>
+    <div id="_wrapper" class="d-flex justify-content-center align-items-center">
+        <div class="container-lg" id="_container">
+            <div class="row d-flex justify-content-center">
+                <div class="card text-dark bg-light mx-3 my-2">
+                    <div class="card-header">#COMPUTER</div>
+                    <div class="card-body p-0" id="_members">
+                        <ul class="list-group m-0" style="border: none !important;">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span id="_member1" class="_memberName"><%= user.username %></span>
+                                <span class="badge bg-secondary text-light" id="_member1points"><%= user.ttt_wins - user.ttt_loses %></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span id="_member2" class="_memberName">Loading...</span> 
+                                <span class="badge bg-secondary text-light" id="_member2points"><%= user.ttt_wins - user.ttt_loses %></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card text-dark bg-light mx-3 my-2 flex-grow-1">
+                    <div class="card-header">TURN</div>
+                    <div class="card-body">
+                        <div class="row mb-1">
+                            <span class="badge bg-secondary text-light" id="_turnArea">Loading...</span> <span class="badge bg-secondary text-light" id="_turnAreaXO">X</span>
+                        </div>
+                        <div class="row">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated text-primary" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%; border-radius: 5px;" id="_turnRemainingTime">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="_gameScene" class="d-flex justify-content-center my-2 card align-items-center">
+                <div id="_gameBoard">
+                    <div class="row">
+                        <div id="_square1" class="_square card _borderRight _borderBottom d-flex justify-content-center align-items-center font-weight-light"></div>
+                        <div id="_square2" class="_square card _borderRight _borderBottom _borderLeft d-flex justify-content-center align-items-center font-weight-light"></div>
+                        <div id="_square3" class="_square card _borderLeft _borderBottom d-flex justify-content-center align-items-center font-weight-light"></div>
+                    </div>
+                    <div class="row">
+                        <div id="_square4" class="_square card _borderBottom _borderRight _borderTop d-flex justify-content-center align-items-center font-weight-light"></div>
+                        <div id="_square5" class="_square card _borderRight _borderBottom _borderLeft _borderTop d-flex justify-content-center align-items-center font-weight-light"></div>
+                        <div id="_square6" class="_square card _borderBottom _borderLeft _borderTop d-flex justify-content-center align-items-center font-weight-light"></div>
+                    </div>
+                    <div class="row">
+                        <div id="_square7" class="_square card _borderRight _borderTop d-flex justify-content-center align-items-center font-weight-light"></div>
+                        <div id="_square8" class="_square card _borderRight _borderLeft _borderTop d-flex justify-content-center align-items-center font-weight-light"></div>
+                        <div id="_square9" class="_square card  _borderLeft _borderTop d-flex justify-content-center align-items-center font-weight-light"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GAME OPTIONS MODAL -->
+    <div class="modal fade" id="optionsModal" tabindex="-1" aria-labelledby="optionsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-primary" id="optionsModalLabel">Options</h5>
+                </div>
+                <div class="modal-body text-primary">
+                    <!-- JOIN ROOM MODAL BODY -->
+                    <form id="_optionsForm">
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="_optionsLevel" id="_optionsLevel-easy" value="Easy">
+                                <label class="form-check-label" for="_optionsLevel-easy">Easy</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="_optionsLevel" id="_optionsLevel-medium" value="Medium" checked>
+                                <label class="form-check-label" for="_optionsLevel-medium">Medium</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="_optionsLevel" id="_optionsLevel-hard" value="Hard">
+                                <label class="form-check-label" for="_optionsLevel-hard">Hard</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="_optionsLevel" id="_optionsLevel-impossible" value="Impossible">
+                                <label class="form-check-label" for="_optionsLevel-impossible">Impossible</label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="_optionsXO" id="_optionsXO-X" value="X" checked>
+                                <label class="form-check-label" for="_optionsXO-X">X</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="_optionsXO" id="_optionsXO-R" value="R">
+                                <label class="form-check-label" for="_optionsXO-R">Random</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="_optionsXO" id="_optionsXO-O" value="O">
+                                <label class="form-check-label" for="_optionsXO-O">O</label>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row-reverse bd-highlight">
+                            <button type="submit" class="btn btn-primary w-100 my-1">Start</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.5/socket.io.js" integrity="sha512-2rUSTSAeOO02jF6eBqENNqPs1EohenJ5j+1dgDPdXSLz9nOlrr8DJk4zW/lDy8rjhGCSonW3Gx812XJQIKZKJQ==" crossorigin="anonymous"></script>
+    <script src="/js/ttt-computer-client.js"></script>
+</body>
+</html>

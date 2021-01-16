@@ -1,0 +1,24 @@
+
+
+svg {
+    height: 200px;
+    width: auto;
+}
+
+
+._404 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+    flex-direction: column;
+}
+
+._404-text {
+    margin-top: 2rem;
+    font-size: 2rem;
+}
+
+._main-btn {
+    font-size: 1.2rem;
+}

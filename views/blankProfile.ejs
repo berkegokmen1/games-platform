@@ -1,0 +1,42 @@
+<%- include('./partials/_header.ejs') %>
+    <link rel="stylesheet" href="/css/profile/profile-s.css">
+</head>
+<body>
+    <%- include('./partials/_navbar.ejs') %> 
+
+    <div class="container-xl">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="home" aria-selected="true">Profile</a>
+            </li>
+        </ul>
+        <div class="tab-content m-2" id="myTabContent">
+            <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="home-tab">
+                <div class="d-flex flex-wrap flex-row justify-content-between">
+                    <!-- USER -->
+                    <div class="card my-2 flex-fill mx-1">
+                        <div class="card-body">
+                            <h3 class="card-title text-danger"><%= search %></h3>
+                            <h6 class="card-subtitle mb-2 text-muted">Created At: ... </h6>
+                            <p class="card-text">This profile does not exist :(</p>
+                        </div>
+                    </div>
+                    <div class="card my-2 flex-fill mx-1">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Points: <span class="badge text-light bg-secondary">0</span></h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Last Change: ... </h6>
+                            <p class="card-text"><span class="badge text-light bg-success">0 Wins</span> <span class="badge text-light bg-danger">0 Defeats</span></p>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>    <script src="/public/js/homepage-client.js"></script>
+    <script src="/js/script-client.js"></script>
+
+</body>
+</html>

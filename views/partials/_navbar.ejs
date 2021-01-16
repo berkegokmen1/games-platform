@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand navbar-dark bg-primary m-2">
+    <div class="container">
+        <a class="navbar-brand" href="/">BETA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <span class="navbar-text">
+            <div class="navbar-nav">
+                <% if (user) { %>
+                    <div class="btn-group">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                <%= user.username %> 
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark dropstart" aria-labelledby="dropdownMenuButton2">
+                                <li><a class="dropdown-item" href="/p/<%= user.username %> ">Profile</a></li>
+                                <li><a class="dropdown-item" href="/p/<%= user.username %> ">Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                <% } else { %>
+                    <!-- LOGIN -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        Login
+                    </button>
+                    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-primary" id="exampleModalLabel">Login</h5>
+                                    <button type="button" class="btn-close _closeBtnFix" data-bs-dismiss="modal" aria-label="Close"><a href="#" class="close btn-close mx-2" data-bs-dismiss="model" aria-label="Close"></a></button>
+                                </div>
+                                <div class="modal-body text-primary">
+                                    <form action="/login" method="POST">
+                                        <div class="form-group">
+                                            <label for="username">Username</label>
+                                            <input type="text" name="username" id="username-l" class="form-control" placeholder="Username" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- REGISTER -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">
+                        Register
+                    </button>
+                    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-primary" id="exampleModalLabel2">Register</h5>
+                                    <button type="button" class="btn-close _closeBtnFix" data-bs-dismiss="modal" aria-label="Close"><a href="#" class="close btn-close mx-2" data-bs-dismiss="model" aria-label="Close"></a></button>
+                                </div>
+                                <div class="modal-body text-primary">
+                                    <form action="/register" method="POST">
+                                        <div class="form-group">
+                                            <label for="username">Username</label>
+                                            <input type="text" name="username" id="username-r" class="form-control" placeholder="Username">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="password" name="password" id="password-r" class="form-control" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password2">Password</label>
+                                            <input type="password" name="password2" id="password2" class="form-control" placeholder="Password Again">
+                                        </div>
+                                        <div id="passwordHelpBlock" class="form-text">
+                                            Your password must be 6-15 characters long, contain letters and numbers.
+                                        </div>
+                                        <hr>
+                                        <div class="form-group">
+                                            <label for="testerCode">Beta Tester Code</label>
+                                            <input type="password" name="testerCode" id="testerCode" class="form-control" placeholder="Beta Tester Code">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block my-2">Register</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %> 
+            </div>
+        </span>
+    </div>
+</nav>
+

@@ -1,0 +1,91 @@
+<%- include('./partials/_header.ejs') %>
+    <link rel="stylesheet" href="/css/docs/docs-s.css">
+    <link rel="stylesheet" href="/css/docs/docs-m.css">
+</head>
+<body>
+    <%- include('./partials/_navbar.ejs') %> 
+
+    <div class="container-lg">
+        <%- include('./partials/_flash.ejs') %>
+        <div class="row mx-2" id="_main">
+            <div class="col-lg-2 w-100" id="_navigator">
+                <nav>
+                    <a href="#users" class="list-group-item list-group-item-action _navigator-item">Users</a>
+                    <nav class="_sublink">
+                        <a href="#users-profile" class="list-group-item list-group-item-action _navigator-item">Profile Info</a>
+                    </nav>
+                </nav>
+                <nav>
+                    <a href="#rooms" class="list-group-item list-group-item-action _navigator-item">Rooms</a>
+                    <nav class="_sublink">
+                        <a href="#rooms-room" class="list-group-item list-group-item-action _navigator-item">Room Info</a>
+                    </nav>
+                </nav>
+            </div>
+            <div class="col" id="_info">
+                <div id="users">
+                    <h4>USERS</h4>
+                    <hr>
+                    <div id="users-profile" class="ml-5">
+                        <h4>Getting profile information</h4>
+                        <p>You can get any public profile information by using structure below.</p>
+                        <pre class="prettyprint lang-javascript p-2">
+                            <span class="_currentURL"></span>/profiles?username=berkegokmen1&key=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX
+                        </pre>
+                        <pre class="prettyprint lang-javascript p-2">
+                            {
+                                "apiKey": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX",
+                                "username": "berkegokmen1",
+                                "games": [
+                                    "FundamentalCaterinaJaime178",
+                                    "SmilingWynnySascha510",
+                                    "UglyCharlotteTracey388",
+                                    "HungryEnricaBrynn518",
+                                ],
+                                "createdAt": "2021-01-13T05:04:13.467Z",
+                                "updatedAt": "2021-01-14T05:57:15.328Z"
+                            }
+                        </pre>
+                    </div>
+                </div>
+                <div id="rooms">
+                    <h4>ROOMS</h4>
+                    <hr>
+                    <div id="rooms-room" class="ml-5">
+                        <h4>Getting room information</h4>
+                        <p>You can get any public room information by using structure below.</p>
+                        <pre class="prettyprint lang-javascript p-2">
+                            <span class="_currentURL"></span>/rooms?room=LiveMilzieTorey137&key=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX
+                        </pre>
+                        <pre class="prettyprint lang-javascript p-2">
+                            {
+                                "game": "XOX",
+                                "name": "LiveMilzieTorey137",
+                                "members": [
+                                    "berkegokmen1",
+                                    "admin"
+                                ],
+                                "winner": "berkegokmen1",
+                                "ended": true,
+                                "createdAt": "2021-01-10T09:09:15.673Z"
+                            }
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+        </div> 
+    </div>
+
+    <%- include('./partials/_footer.ejs') %> 
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.5/socket.io.js" integrity="sha512-2rUSTSAeOO02jF6eBqENNqPs1EohenJ5j+1dgDPdXSLz9nOlrr8DJk4zW/lDy8rjhGCSonW3Gx812XJQIKZKJQ==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>    <script src="/js/script-client.js"></script>
+    <script src="/js/docs-client.js"></script>
+
+</body>
+</html>

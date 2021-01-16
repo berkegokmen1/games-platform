@@ -1,0 +1,148 @@
+<%- include('./partials/_header.ejs') %>
+    <link rel="stylesheet" href="/css/homepage/homepage-m.css">
+    <link rel="stylesheet" href="/css/homepage/homepage-s.css">
+</head>
+<body>
+    <%- include('./partials/_navbar.ejs') %> 
+
+    <div class="container-lg">
+        <div class="row">
+            <div class="col-9">
+                <%- include('./partials/_flash.ejs') %>
+                <div class="my-1 mx-2">
+                    <% if (user) { %>
+                        <h1>Welcome <%= user.username %>! </h1>
+                    <% } else { %>
+                        <h1>Welcome!</h1>
+                    <% } %> 
+                    <hr>
+                    <div class="d-flex flex-column justify-content-between" id="_main">
+                        <div id="_main-text">
+                            <h4>A simple yet powerful game platform.</h4>
+                            <hr>
+                            <p>This is an open source project.</p>
+                            <p>All of the source code is available on <a href="https://github.com/berkegokmen1">GitHub</a>.</p>
+                            <p>Feel free to email me about anything related to the project. <a href="mailto:ahmetberkegokmen@gmail.com">ahmetberkegokmen@gmail.com</a>.</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row d-flex w-100 justify-content-around mx-1">
+                        <a class="btn btn-primary w-50" href="/top10">Top 10 Players</a>
+
+                        <a class="btn btn-primary w-50" href="/api/docs">Api Documentation</a>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-3">
+                <!-- JOIN ROOM BTN -->
+                <% if (user) { %>
+                    <button type="button" class="btn btn-primary w-100 my-3" data-bs-toggle="modal" data-bs-target="#createModal">
+                        Create a Room
+                    </button>
+                    <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#roomModal">
+                        Join a Room
+                    </button>
+                <% }  else { %>
+                    <btn class="btn btn-primary w-100 my-3" data-bs-toggle="modal" data-bs-target="#loginModal">Create A Room</btn>
+                    <btn class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#loginModal">Join A Room</btn>
+                <% } %> 
+
+                <% if (user) { %>
+
+                    <!-- CREATE ROOM MODAL -->
+                    <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-primary" id="roomModalLabel">Create Room</h5>
+                                    <button type="button" class="btn-close _closeBtnFix" data-bs-dismiss="modal" aria-label="Close"><a href="#" class="close btn-close mx-2" data-bs-dismiss="model" aria-label="Close"></a></button>
+                                </div>
+                                <div class="modal-body text-primary">
+                                    <!-- CREATE ROOM MODAL BODY -->
+                                    <!-- GAMES -->
+                                    <form action="/ttt" method="POST">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="_option" id="_options_public" value="public" checked>
+                                                <label class="form-check-label" for="_options_public">Public</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="_option" id="_options_private" value="private">
+                                                <label class="form-check-label" for="_options_private">Private</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="_option" id="_options_computer" value="computer">
+                                                <label class="form-check-label" for="_options_computer">Computer</label>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row-reverse bd-highlight">
+                                            <button type="submit" class="btn btn-primary w-100 my-1">Tic Tac Toe</button>
+                                        </div>
+                                    </form>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JOIN ROOM MODAL -->
+                    <div class="modal fade" id="roomModal" tabindex="-1" aria-labelledby="roomModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-primary" id="roomModalLabel">Join Game</h5>
+                                    <button type="button" class="btn-close _closeBtnFix" data-bs-dismiss="modal" aria-label="Close"><a href="#" class="close btn-close mx-2" data-bs-dismiss="model" aria-label="Close"></a></button>
+                                </div>
+                                <div class="modal-body text-primary">
+                                    <!-- JOIN ROOM MODAL BODY -->
+                                    <form id="_joinRoomForm"> <!-- prevent default behaviour and add event listener to join button -->
+                                        <div class="form-group">
+                                            <label for="roomName">Room Name</label>
+                                            <input type="text" name="roomName" id="_roomNameInput" class="form-control" placeholder="e.g. AncientNinettaMoll543" required>
+                                        </div>
+                                        <div class="d-flex flex-row-reverse bd-highlight">
+                                            <button type="submit" class="btn btn-primary" id="_joinRoomBtn">Join</button>
+                                            <button type="button" class="btn btn-secondary mx-1" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                <% } %>
+                
+                <!-- ONLINE ROOMS -->
+                <div class="btn-group-vertical w-100 my-3" id="test">
+                    <button type="button" class="btn btn-primary">Online Rooms</button>
+                    <div id="_online-rooms-box" class="w-100">
+                        <!-- SOCKETIO will try to insert into both of the divs -->
+                        <% if (user) { %>
+                            <div id="_online-rooms-loggedIn" class="w-100 btn-group-vertical">
+                                <% onlineRooms.forEach((onlineRoom) => { %>
+                                    <a class="btn btn-outline-secondary" href="/ttt/<%= onlineRoom.name %>" id="link-<%= onlineRoom.name %>"><%= onlineRoom.game %> | <%= onlineRoom.player %> (<%= onlineRoom.points %>)</a>
+                                <% }) %>
+                            </div>
+                        <% } else { %>
+                            <div id="_online-rooms-notLoggedIn" class="w-100 btn-group-vertical">
+                                <btn class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#loginModal" id="_pleaseLogInBtn"><br>Please log in to see live data.<br><br></btn>
+                            </div>
+                        <% } %> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('./partials/_footer.ejs') %> 
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.5/socket.io.js" integrity="sha512-2rUSTSAeOO02jF6eBqENNqPs1EohenJ5j+1dgDPdXSLz9nOlrr8DJk4zW/lDy8rjhGCSonW3Gx812XJQIKZKJQ==" crossorigin="anonymous"></script>
+    <script src="/js/script-client.js"></script>
+    <script src="/js/homepage-client.js"></script>
+
+</body>
+</html>

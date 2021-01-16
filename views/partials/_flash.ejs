@@ -1,0 +1,23 @@
+<% if (flashSuccess != "" && flashSuccess) { %>
+    <div class="alert alert-success mx-2 my-1 alert-dismissible fade show" role="alert"><a href="#" class="close" data-dismiss="alert" data-bs-dismiss="alert" aria-label="Close"></a><%= flashSuccess %></div>
+<% } %>
+
+<% if (flashError != "" && flashError) { %>
+    <div class="alert alert-danger mx-2 my-1 alert-dismissible fade show" role="alert"><a href="#" class="close" data-dismiss="alert" data-bs-dismiss="alert" aria-label="Close"></a><%= flashError %></div>
+<% } %>
+
+<% if (flashWarning != "" && flashWarning) { %>
+    <div class="alert alert-warning mx-2 my-1 alert-dismissible fade show" role="alert"><a href="#" class="close" data-dismiss="alert" data-bs-dismiss="alert" aria-label="Close"></a><%= flashWarning %></div>
+<% } %>
+
+<% if (flahsNotify != "" && flahsNotify) { %>
+    <div class="alert alert-info mx-2 my-1 alert-dismissible fade show" role="alert"><a href="#" class="close" data-dismiss="alert" data-bs-dismiss="alert" aria-label="Close"></a><%= flahsNotify %></div>
+<% } %>
+
+<% if (passportFailure != "" && passportFailure) { %>
+    <div class="alert alert-danger mx-2 my-1 alert-dismissible fade show" role="alert"><a href="#" class="close" data-dismiss="alert" data-bs-dismiss="alert" aria-label="Close"></a><%= passportFailure %></div>
+<% } %>
+
+<% if (passportSuccess != "" && passportSuccess) { %>
+    <div class="alert alert-success mx-2 my-1 alert-dismissible fade show" role="alert"><a href="#" class="close" data-dismiss="alert" data-bs-dismiss="alert" aria-label="Close"></a><%= passportSuccess %></div>
+<% } %>
