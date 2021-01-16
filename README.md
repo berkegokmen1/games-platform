@@ -12,13 +12,13 @@ This project uses a number of open source projects to work properly:
 * [node.js] - Evented I/O for the backend
 * [Bootswatch] - Great sketchy theme for bootsrap
 * [Passport] - Simple, unobtrusive authentication for Node.js
-* [socketio] - Great sketchy theme for bootsrap
+* [socketio] - For real time communication
 * [jQuery]
 
 And of course this project itself is open source with a [public repository][repo] on GitHub.
 
 ### Running server locally
-Clone or donwload the project to your local machine.
+Clone or download the project to your local machine.
 Create a dev.env file under `/config` folder.
 Copy and paste the following fields. Specify the arguments according to your situation.
 ```env
