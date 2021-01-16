@@ -39,7 +39,7 @@ Please make sure to update tests as appropriate.
 ### License
 [MIT](https://choosealicense.com/licenses/mit/)
 
-   [repo]: <https://github.com/joemccann/dillinger>
+   [repo]: <https://github.com/berkegokmen1/games-platform>
    [ejs]: <https://github.com/mde/ejs>
    [Bootstrap]: <https://getbootstrap.com>
    [node.js]: <http://nodejs.org>
