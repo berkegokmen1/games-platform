@@ -4,7 +4,7 @@ Built for learning purposes.
 
 ## Tech
 
-Dillinger uses a number of open source projects to work properly:
+This project uses a number of open source projects to work properly:
 
 * [Express] - Fast node.js network app framework
 * [ejs] - HTML templates done right. Fast and easy to extend.
