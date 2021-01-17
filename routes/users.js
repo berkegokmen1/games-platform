@@ -104,7 +104,8 @@ router.post('/password', authCheck, async (req, res) => {
         const validationErrors = await passChangeValidation(req.user.username, oldpass, newpass, newpass2);
         if (validationErrors.length > 0) {
             return res.render('password', {
-                errors: validationErrors
+                errors: validationErrors,
+                title: "Password Change"
             })
         }
 
@@ -118,7 +119,8 @@ router.post('/password', authCheck, async (req, res) => {
         const validationErrors = await passChangeValidation(req.user.username, oldpass, newpass, newpass2);
         validationErrors.push({ message: "Something went wrong."})
         return res.render('password', {
-            errors: validationErrors
+            errors: validationErrors,
+            title: "Password Change"
         })
     }
 })
