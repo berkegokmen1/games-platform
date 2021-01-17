@@ -66,7 +66,6 @@ router.get('/profiles', async (req, res) => { // /profiles?username=[USERNAME]&k
         const { username, createdAt, updatedAt, apiKey, games } = requested;
 
         res.send({
-            apiKey,
             username,
             games,
             createdAt,
