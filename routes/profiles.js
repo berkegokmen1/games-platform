@@ -24,7 +24,7 @@ router.get('/:username', async (req, res) => {
 
         const profileUser = await User.findOne({ username: req.params.username });
         
-        if (!profileUser) { return res.render('blankProfile', { search: req.params.username }) }
+        if (!profileUser) { return res.render('blankProfile', { search: req.params.username, title: req.params.username }) }
         const gamesArray = await Room.find({ members: { "$in" : [profileUser.username] } }).sort({ createdAt: -1 }).limit(12); // get the rooms in which the username of user is present. createdAt: -1 => newest > oldest 
         res.render('profile', {
             isOwner: false,
