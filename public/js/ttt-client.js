@@ -104,6 +104,8 @@ try {
 
     socket.on('gameEnded', ({ winner, message, line }) => {
 
+        bodyElem.style.pointerEvents = 'none';
+
         function showEndingModal() {
             bodyElem.innerHTML += ` <div class="modal fade" id="endGameModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="endGameModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
